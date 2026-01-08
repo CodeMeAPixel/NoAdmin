@@ -76,10 +76,7 @@ export function PermissionChecklist() {
 
   return (
     <section id="checklist" className="relative w-full px-4 py-12 sm:py-24 bg-gray-950">
-      {/* Background */}
-      <div className="absolute inset-0 grid-pattern opacity-30" />
-      <div className="absolute top-1/4 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      {/* Simplified background */}
 
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Section header */}
@@ -158,7 +155,7 @@ export function PermissionChecklist() {
             </div>
 
             {/* Permission grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-h-[400px] sm:max-h-[600px] overflow-y-auto pr-1 sm:pr-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-h-[400px] sm:max-h-[600px] overflow-y-auto pr-1 sm:pr-2" style={{ contain: 'layout style paint' }}>
               <Tooltip.Provider delayDuration={300}>
                 {filteredPermissions.map((permission) => (
                   <Tooltip.Root key={permission.id}>

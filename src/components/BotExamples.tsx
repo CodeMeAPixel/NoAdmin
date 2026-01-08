@@ -240,10 +240,9 @@ const PermissionBadge = memo(PermissionBadgeComponent);
 function BotExamplesComponent() {
   return (
     <section id="bot-examples" className="relative w-full px-4 py-12 sm:py-24 bg-gray-950">
-      {/* Background effects */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
-      <div className="absolute top-0 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      {/* Simplified background - removed blur effects */}
+      <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(circle at 25% 0%, #3b82f6 0%, transparent 50%)' }} />
+      <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at 75% 100%, #ec4899 0%, transparent 50%)' }} />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Section header */}

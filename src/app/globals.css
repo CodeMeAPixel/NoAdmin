@@ -3,7 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* Reduce repaints by using will-change sparingly */
 }
 
 @theme inline {
@@ -21,7 +20,7 @@
 }
 
 html {
-  /* Remove smooth scroll for better performance on mobile */
+  /* Remove smooth scroll on mobile */
   scroll-behavior: auto;
 }
 
@@ -40,17 +39,141 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Modern glow effects - use transform instead of filter for better perf */
-.glow-blue {
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.glow-purple {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+/* Remove expensive glass morphism - use solid colors */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.glow-red {
-  box-shadow: 0 0 40px rgba(239, 68, 68, 0.15);
+/* Radix UI Tooltip styles - optimize animations */
+[data-radix-tooltip-content] {
+  animation: slideUp 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accordion animations */
+[data-radix-accordion-content] {
+  overflow: hidden;
+  contain: layout style;
+}
+
+[data-radix-accordion-content][data-state="open"] {
+  animation: slideDown 200ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+[data-radix-accordion-content][data-state="closed"] {
+  animation: slideUpAccordion 200ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpAccordion {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Dialog backdrop */
+[data-radix-dialog-overlay] {
+  animation: fadeIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pulse animation for warnings */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
+  }
+}
+
+.pulse-warning {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Optimized transitions */
+button,
+a[role="button"],
+input[type="checkbox"],
+label {
+  transition: color 150ms, background-color 150ms, border-color 150ms;
+  transform: translateZ(0);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
 }
 
 /* Gradient text */
@@ -61,28 +184,9 @@ body {
   background-clip: text;
 }
 
-/* Glass morphism - optimize backdrop-filter usage */
+/* Remove expensive glass morphism - use solid colors */
 .glass {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Animated gradient border */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(var(--background), var(--background)) padding-box,
-    linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899) border-box;
-  border: 2px solid transparent;
-}
-
-/* Grid background pattern - optimized */
-.grid-pattern {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  will-change: none; /* Only add when needed */
 }
 
 /* Radix UI Tooltip styles - optimize animations */
@@ -165,12 +269,12 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Smooth transitions for interactive elements - use GPU acceleration */
+/* Optimized transitions */
 button,
 a[role="button"],
 input[type="checkbox"],
 label {
-  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 150ms, background-color 150ms, border-color 150ms;
   transform: translateZ(0);
 }
 

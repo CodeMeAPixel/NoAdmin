@@ -1,17 +1,15 @@
 export function HeroSection() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gray-950 px-4 pb-16 sm:py-20">
-      {/* Animated background - smaller on mobile */}
-      <div className="absolute inset-0 grid-pattern" />
-      <div className="absolute top-1/4 -left-16 sm:-left-32 w-48 sm:w-96 h-48 sm:h-96 bg-blue-500/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-16 sm:-right-32 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500/20 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[600px] h-72 sm:h-[600px] bg-red-500/10 rounded-full blur-3xl" />
+      {/* Simplified background - removed expensive blur-3xl */}
+      <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%)' }} />
+      <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at 75% 75%, #ec4899 0%, transparent 50%)' }} />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center px-2">
         {/* Badge */}
-        <div className="mb-6 sm:mb-8 inline-flex items-center gap-2 rounded-full bg-red-500/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-red-400 ring-1 ring-red-500/20 backdrop-blur-sm">
+        <div className="mb-6 sm:mb-8 inline-flex items-center gap-2 rounded-full bg-red-500/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-red-400 ring-1 ring-red-500/20">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" style={{ animation: 'none' }} />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
           </span>
           Security Alert

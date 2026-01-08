@@ -1,8 +1,7 @@
 export function WhyPermissionsMatter() {
   return (
     <section className="relative w-full px-4 py-12 sm:py-24 bg-gray-950 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      {/* Simplified background */}
       
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Section header */}

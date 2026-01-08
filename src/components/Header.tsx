@@ -4,8 +4,8 @@ import { memo } from 'react';
 
 function HeaderComponent() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 py-4 sm:py-4">
-      <nav className="mx-auto max-w-6xl flex items-center justify-between rounded-xl sm:rounded-2xl bg-gray-900/90 backdrop-blur-xl ring-1 ring-white/10 px-3 sm:px-6 py-2.5 sm:py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 py-4 sm:py-4 bg-gray-950/80">
+      <nav className="mx-auto max-w-6xl flex items-center justify-between rounded-xl sm:rounded-2xl bg-gray-900/80 ring-1 ring-white/10 px-3 sm:px-6 py-2.5 sm:py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 sm:gap-3">
           <Image
