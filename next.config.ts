@@ -10,10 +10,13 @@ const nextConfig: NextConfig = {
   },
   /* Performance optimizations */
   compress: true,
-  optimizePackageImports: ['@radix-ui/react-accordion', '@radix-ui/react-tooltip'],
   /* Experimental features */
   experimental: {
     scrollRestoration: true,
+    optimizePackageImports: [
+      '@radix-ui/react-accordion', 
+      '@radix-ui/react-tooltip'
+    ],
   },
 };
 
