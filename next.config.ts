@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactCompiler: true,
   /* Image optimization */
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -12,7 +13,6 @@ const nextConfig: NextConfig = {
   optimizePackageImports: ['@radix-ui/react-accordion', '@radix-ui/react-tooltip'],
   /* Experimental features */
   experimental: {
-    reactCompiler: true,
     scrollRestoration: true,
   },
 };
