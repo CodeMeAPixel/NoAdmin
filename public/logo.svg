@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="banGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Shield shape -->
+  <path d="M60 8L16 28v32c0 28 18.7 43.5 44 52 25.3-8.5 44-24 44-52V28L60 8z" fill="url(#shieldGradient)"/>
+  
+  <!-- Inner shield highlight -->
+  <path d="M60 16L24 32v24c0 22.4 15 34.8 36 41.6 21-6.8 36-19.2 36-41.6V32L60 16z" fill="#1f2937" opacity="0.9"/>
+  
+  <!-- "A" letter with prohibition -->
+  <g transform="translate(60, 68)">
+    <!-- Letter A -->
+    <path d="M-16 20L0-20 16 20M-10 8h20" stroke="#9ca3af" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  
+  <!-- Prohibition circle and line -->
+  <circle cx="60" cy="64" r="28" stroke="url(#banGradient)" stroke-width="5" fill="none"/>
+  <line x1="40" y1="44" x2="80" y2="84" stroke="url(#banGradient)" stroke-width="5" stroke-linecap="round"/>
+</svg>

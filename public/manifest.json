@@ -1,0 +1,22 @@
+{
+  "name": "NoAdmin - Discord Bot Permission Best Practices",
+  "short_name": "NoAdmin",
+  "description": "Learn why Discord bot developers should avoid Administrator permissions and implement secure permission practices.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#ef4444",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ]
+}

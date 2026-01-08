@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="banGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Shield shape -->
+  <path d="M16 2L4 7.5v8.5c0 7.5 5 11.6 12 14 7-2.4 12-6.5 12-14V7.5L16 2z" fill="url(#shieldGrad)"/>
+  
+  <!-- Inner shield -->
+  <path d="M16 4.5L6 9v6.5c0 6 4 9.3 10 11.1 6-1.8 10-5.1 10-11.1V9L16 4.5z" fill="#1f2937"/>
+  
+  <!-- Prohibition circle and line -->
+  <circle cx="16" cy="17" r="7" stroke="url(#banGrad)" stroke-width="2" fill="none"/>
+  <line x1="11" y1="12" x2="21" y2="22" stroke="url(#banGrad)" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,5 +1,6 @@
 {
   "name": "noadmin",
+  "description": "Stop requesting Administrator permission. Build secure Discord bots.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,9 +11,14 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "@radix-ui/react-icons": "^1.3.2",
     "next": "16.1.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
