@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
@@ -387,8 +388,8 @@ function BotExamplesComponent() {
           </div>
         </div>
       </div>
- 
-
-export const BotExamples = memo(BotExamplesComponent);   </section>
+    </section>
   );
 }
+
+export const BotExamples = memo(BotExamplesComponent);
