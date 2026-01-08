@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { memo } from 'react';
 
-export function Header() {
+function HeaderComponent() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 py-4 sm:py-4">
       <nav className="mx-auto max-w-6xl flex items-center justify-between rounded-xl sm:rounded-2xl bg-gray-900/90 backdrop-blur-xl ring-1 ring-white/10 px-3 sm:px-6 py-2.5 sm:py-3">
@@ -58,3 +59,5 @@ export function Header() {
     </header>
   );
 }
+
+export const Header = memo(HeaderComponent);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { DISCORD_PERMISSIONS, ADMIN_PERMISSION_WARNING } from '@/lib/permissions';
 import { validatePermissions } from '@/lib/validation';
@@ -26,21 +26,23 @@ export function PermissionChecklist() {
     );
   }, [searchQuery]);
 
-  function togglePermission(permissionId: string) {
-    const newSelected = new Set(selectedPermissions);
-    if (newSelected.has(permissionId)) {
-      newSelected.delete(permissionId);
-    } else {
-      newSelected.add(permissionId);
-    }
-    setSelectedPermissions(newSelected);
-  }
+  const togglePermission = useCallback((permissionId: string) => {
+    setSelectedPermissions((prev) => {
+      const newSelected = new Set(prev);
+      if (newSelected.has(permissionId)) {
+        newSelected.delete(permissionId);
+      } else {
+        newSelected.add(permissionId);
+      }
+      return newSelected;
+    });
+  }, []);
 
-  function clearAll() {
+  const clearAll = useCallback(() => {
     setSelectedPermissions(new Set());
-  }
+  }, []);
 
-  function calculatePermissionValue(): bigint {
+  const permissionValue = useMemo(() => {
     let total = 0n;
     selectedPermissions.forEach((permId) => {
       const perm = DISCORD_PERMISSIONS.find((p) => p.id === permId);
@@ -49,25 +51,28 @@ export function PermissionChecklist() {
       }
     });
     return total;
-  }
+  }, [selectedPermissions]);
 
-  const permissionValue = calculatePermissionValue();
-
-  function copyToClipboard(text: string) {
+  const copyToClipboard = useCallback((text: string) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  function copyUrlToClipboard(text: string) {
+  const copyUrlToClipboard = useCallback((text: string) => {
     navigator.clipboard.writeText(text);
     setCopiedUrl(true);
-    setTimeout(() => setCopiedUrl(false), 2000);
-  }
+    const timer = setTimeout(() => setCopiedUrl(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const displayBotId = botId.trim() || 'YOUR_BOT_ID';
-  const oauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${displayBotId}&scope=bot+applications.commands&permissions=${permissionValue.toString()}`;
-  const isValidBotId = /^\d{17,19}$/.test(botId.trim());
+  const displayBotId = useMemo(() => botId.trim() || 'YOUR_BOT_ID', [botId]);
+  const isValidBotId = useMemo(() => /^\d{17,19}$/.test(botId.trim()), [botId]);
+  const oauthUrl = useMemo(
+    () => `https://discord.com/api/oauth2/authorize?client_id=${displayBotId}&scope=bot+applications.commands&permissions=${permissionValue.toString()}`,
+    [displayBotId, permissionValue]
+  );
 
   return (
     <section id="checklist" className="relative w-full px-4 py-12 sm:py-24 bg-gray-950">

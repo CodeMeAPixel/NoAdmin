@@ -1,4 +1,6 @@
-export function Footer() {
+import { memo } from 'react';
+
+function FooterComponent() {
   return (
     <footer className="w-full px-4 py-6 bg-gray-950 border-t border-white/5">
       <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-gray-500">
@@ -33,3 +35,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export const Footer = memo(FooterComponent);

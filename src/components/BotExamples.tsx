@@ -201,7 +201,7 @@ const BOT_EXAMPLES = [
   },
 ];
 
-function PermissionBadge({ name, value, reason, risky }: { name: string; value: number; reason: string; risky?: boolean }) {
+function PermissionBadgeComponent({ name, value, reason, risky }: { name: string; value: number; reason: string; risky?: boolean }) {
   return (
     <Tooltip.Root>
       <Tooltip.Trigger asChild>
@@ -234,7 +234,9 @@ function PermissionBadge({ name, value, reason, risky }: { name: string; value: 
   );
 }
 
-export function BotExamples() {
+const PermissionBadge = memo(PermissionBadgeComponent);
+
+function BotExamplesComponent() {
   return (
     <section id="bot-examples" className="relative w-full px-4 py-12 sm:py-24 bg-gray-950">
       {/* Background effects */}
@@ -385,6 +387,8 @@ export function BotExamples() {
           </div>
         </div>
       </div>
-    </section>
+ 
+
+export const BotExamples = memo(BotExamplesComponent);   </section>
   );
 }
