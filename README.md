@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo.svg" alt="NoAdmin Logo" width="120" height="120" />
+  <img src="public/logo-solid.svg" alt="NoAdmin Logo" width="120" height="120" />
   
   # noadmin.info
   
@@ -30,12 +30,12 @@ Too many Discord bots request Administrator permission "for convenience" when th
 
 ## ✨ Features
 
-- **📚 Educational Content** — Learn why least privilege matters for Discord bots
-- **🔢 Permission Calculator** — Interactive tool to calculate exact permission integers
-- **🤖 Bot Examples** — Real-world examples showing what permissions different bot types need
-- **🔗 OAuth2 URL Generator** — Generate invite links with your Bot ID and calculated permissions
-- **📱 Mobile Responsive** — Fully responsive design that works on all devices
-- **🌙 Dark Theme** — Easy on the eyes, matching Discord's aesthetic
+- **🔢 Permission Calculator** (`/calculator`) — All 52 Discord permissions grouped by category and risk, with a live verdict, shareable URL state, an invite link builder and code snippets for discord.js, discord.py, Serenity, JDA and DiscordGo
+- **🔍 Invite Analyzer** (`/analyze`) — Paste any bot invite link or permission number to see what it grants, how risky it is and what a leaked token could do
+- **📖 Permission Reference** (`/permissions`) — A page per permission with its value, bit, risk, 2FA requirement and safer alternatives, verified against Discord's docs
+- **🤖 Bot Examples** (`/examples`) — The exact permissions ten common bot types need, with a reason for each
+- **📚 Guides** (`/guides`) — Short reads on overwrites, role hierarchy, bitfields, intents and handling missing permissions
+- **🏷️ README Badge** (`/badge`, `/api/badge`) — An SVG badge generated from your real invite permissions
 
 ## 🚀 Getting Started
 
@@ -92,25 +92,34 @@ noadmin/
 │   └── manifest.json       # PWA manifest
 ├── src/
 │   ├── app/
-│   │   ├── api/og/         # OG image API endpoint
-│   │   ├── layout.tsx      # Root layout with metadata
-│   │   ├── page.tsx        # Home page
-│   │   ├── opengraph-image.tsx
-│   │   └── twitter-image.tsx
-│   └── components/
-│       ├── Header.tsx
-│       ├── HeroSection.tsx
-│       ├── WhyPermissionsMatter.tsx
-│       ├── HowPermissionsWork.tsx
-│       ├── BotExamples.tsx
-│       ├── PermissionChecklist.tsx
-│       ├── CallToAction.tsx
-│       └── Footer.tsx
+│   │   ├── analyze/        # Invite analyzer
+│   │   ├── badge/          # README badge builder
+│   │   ├── calculator/     # Permission calculator
+│   │   ├── examples/       # Bot examples (+ [slug] pages)
+│   │   ├── guides/         # Guides (+ [slug] pages)
+│   │   ├── permissions/    # Permission reference (+ [slug] pages)
+│   │   ├── api/badge/      # SVG badge endpoint
+│   │   ├── api/og/         # OG image endpoint (?title=&subtitle=)
+│   │   ├── layout.tsx      # Root layout, header and footer
+│   │   └── page.tsx        # Home page
+│   ├── components/
+│   │   ├── layout/         # SiteHeader, SiteFooter
+│   │   ├── tools/          # Calculator, Analyzer, InviteBuilder, SnippetTabs, BadgeBuilder
+│   │   └── ui/             # Shared primitives and icons
+│   └── lib/
+│       ├── permissions.ts  # Permission catalog, BigInt encode/decode, invite parsing
+│       ├── analyze.ts      # Verdicts and findings
+│       ├── templates.ts    # Bot examples
+│       ├── guides.ts       # Guide content
+│       └── snippets.ts     # Code snippet generators
 ├── biome.json
 ├── next.config.ts
-├── tailwind.config.ts
 └── tsconfig.json
 ```
+
+### Updating permissions
+
+When Discord adds a permission, add it to `PERMISSIONS` in `src/lib/permissions.ts` and bump `CATALOG_VERIFIED`. Permission values go past bit 31, so always use `BigInt`, never JavaScript's 32-bit `|` and `&` on plain numbers.
 
 ## 📜 Available Scripts
 

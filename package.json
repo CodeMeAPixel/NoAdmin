@@ -1,14 +1,15 @@
 {
   "name": "noadmin",
   "description": "Stop requesting Administrator permission. Build secure Discord bots.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "brand": "node scripts/generate-brand-assets.mts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",

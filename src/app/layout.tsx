@@ -1,6 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SITE_NAME } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,47 +16,49 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Stop requesting Administrator. Calculate the exact Discord permissions your bot needs, analyze any invite link, and learn least-privilege bot development.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://noadmin.info'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "NoAdmin - Discord Bot Permission Best Practices",
+    default: "NoAdmin: Discord bot permission tools",
     template: "%s | NoAdmin",
   },
-  description: "Learn why Discord bot developers should avoid Administrator permissions and how to request only the permissions your bot needs. A comprehensive guide to secure, trustworthy bot development using the principle of least privilege.",
+  description,
   keywords: [
     "Discord bot",
     "Discord permissions",
-    "bot development",
+    "permissions calculator",
+    "invite link analyzer",
     "Administrator permission",
     "least privilege",
     "Discord security",
-    "bot permissions calculator",
     "OAuth2",
-    "Discord API",
     "bot best practices",
   ],
-  authors: [{ name: "NoAdmin", url: "https://noadmin.info" }],
-  creator: "NoAdmin",
-  publisher: "NoAdmin",
-  icons: {
-    icon: "/favicon.svg",
-    apple: "/logo.svg",
-    shortcut: "/favicon.svg",
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  appleWebApp: {
+    title: SITE_NAME,
+    capable: true,
+    statusBarStyle: "black-translucent",
   },
-  manifest: "/manifest.json",
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
-    title: "NoAdmin - Discord Bot Permission Best Practices",
-    description: "Stop requesting Administrator permission. Learn to build secure Discord bots using the principle of least privilege.",
+    title: "NoAdmin: Discord bot permission tools",
+    description,
     type: "website",
-    url: "https://noadmin.info",
-    siteName: "NoAdmin",
+    url: "/",
+    siteName: SITE_NAME,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "NoAdmin - Discord Bot Permission Best Practices",
-    description: "Stop requesting Administrator permission. Learn to build secure Discord bots using the principle of least privilege.",
-    creator: "@noadmin",
+    title: "NoAdmin: Discord bot permission tools",
+    description,
   },
   robots: {
     index: true,
@@ -60,28 +66,37 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
-  },
-  alternates: {
-    canonical: "https://noadmin.info",
   },
   category: "technology",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-black font-sans antialiased`}
       >
-        {children}
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[70] focus:rounded-md focus:bg-white focus:px-3 focus:py-1.5 focus:text-sm focus:text-black"
+        >
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="content" className="flex-grow">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );
