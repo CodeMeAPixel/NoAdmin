@@ -99,8 +99,7 @@ export function SiteFooter() {
         <div className="mt-10 flex flex-col-reverse gap-3 border-t border-white/[0.06] pt-6 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} CodeMeAPixel · Not affiliated with
-            Discord Inc. · Permission data verified against Discord&apos;s docs
-            on {verified}.
+            Discord Inc.
           </p>
           <a
             href={GITHUB_URL}
