@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/examples",
     "/guides",
     "/badge",
+    "/developers",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     changeFrequency: "monthly" as const,

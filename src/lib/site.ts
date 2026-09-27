@@ -7,4 +7,5 @@ export const NAV = [
   { name: "Permissions", href: "/permissions" },
   { name: "Examples", href: "/examples" },
   { name: "Guides", href: "/guides" },
+  { name: "API", href: "/developers" },
 ];

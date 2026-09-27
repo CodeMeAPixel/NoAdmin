@@ -11,6 +11,7 @@ const COLUMNS = [
       { name: "Permission calculator", href: "/calculator" },
       { name: "Invite analyzer", href: "/analyze" },
       { name: "README badge", href: "/badge" },
+      { name: "API for bot lists", href: "/developers" },
     ],
   },
   {

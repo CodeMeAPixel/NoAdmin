@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- A public JSON API for bot lists, dashboards and CI, with no key and no
+  stored data. Every endpoint allows cross-origin requests.
+  - `GET /api/v1/analyze?input=` (also `invite`, `permissions` or `p`)
+    returns the same analysis as the analyzer page, including an
+    `administrator` flag, the verdict, each granted permission with its
+    risk, findings, the closest bot example, and a `report_url` to link
+    people to. Permission values are returned as strings.
+  - `POST /api/v1/analyze` accepts `{"input": "..."}`, or `{"inputs": [...]}`
+    for up to 50 at once.
+  - `GET /api/v1/permissions` returns the full permission catalog.
+  - `GET /api/v1/openapi.json` is an OpenAPI 3.1 spec for the API and the
+    badge endpoint.
+- `/developers`: API documentation with TypeScript, Go and curl examples, a
+  live example response, and a snippet for checking Administrator without
+  the API. It is linked from the header, the footer and the sitemap.
+
 ## [0.2.0] - 2026-09-26
 
 ### Changed
